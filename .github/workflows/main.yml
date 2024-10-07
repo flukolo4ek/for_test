@@ -16,37 +16,12 @@ on:
 
 
 jobs:
-#  release_drafter:
-#    runs-on: ubuntu-22.04
-#    permissions:
-#      contents: write
-#      pull-requests: write
-##    env:
-##      GH_TOKEN: ${{ github.token }}
-##      OWNER: ${{ github.repository_owner }}
-##      REPO: ${{ github.event.repository.name }}
-#    steps:
-#      - name: print data
-#        run: |
-#          echo ${{ secrets.GITHUB_TOKEN }}
-#          echo {{ secrets.GITHUB_TOKEN }}
-#          echo ${{ github.token }}
-#          echo {{ github.token }}
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#      - uses: release-drafter/release-drafter@v6
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   multilabeler:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
       pull-requests: write
-#    env:
-#      GH_TOKEN: ${{ github.token }}
-#      OWNER: ${{ github.repository_owner }}
-#      REPO: ${{ github.event.repository.name }}
+
     if: github.event_name == 'pull_request_target'
 
     steps:
