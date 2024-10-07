@@ -1,5 +1,10 @@
 version: v1
+
 labels:
   - label: 'type/feat'
     matcher:
-      title: '^feat:.*'
+      title: '^feat*'
+
+  - label: 'type/fix'
+    matcher:
+      title: '^fix*'

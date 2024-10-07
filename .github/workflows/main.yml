@@ -57,8 +57,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: fuxingloh/multi-labeler@v3
-
+      - uses: fuxingloh/multi-labeler@v4
 
 #  label-pr:
 #    runs-on: ubuntu-22.04
