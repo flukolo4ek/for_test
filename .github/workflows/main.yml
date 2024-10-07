@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: data
         run: |
-          echo ${{ github.event }} 
+          env
 
       - name: Checkout code
         uses: actions/checkout@v4
