@@ -47,10 +47,16 @@ jobs:
 #      GH_TOKEN: ${{ github.token }}
 #      OWNER: ${{ github.repository_owner }}
 #      REPO: ${{ github.event.repository.name }}
+    if: github.event_name == 'pull_request_target'
+
     steps:
       - name: data
         run: |
           env
+          echo $github.event_name
+          echo ${{ github.event_name }}
+          echo "${{ github.event_name }}"
+          echo "${{ github.event_name }}"
 
       - name: Checkout code
         uses: actions/checkout@v4
