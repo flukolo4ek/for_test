@@ -8,3 +8,7 @@ labels:
   - label: 'type/fix'
     matcher:
       title: '^fix*'
+
+  - label: 'type/chore'
+    matcher:
+      title: '^chore*'
