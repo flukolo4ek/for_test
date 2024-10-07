@@ -9,17 +9,11 @@ on:
       - unlabeled
   workflow_dispatch:
     inputs:
-      test_targets:
-        default: "__ALL__"
-        description: "Comma separated list to run pytest on, e.g.: `lib/dl_api_lib,lib/dl_core`. Use __ALL__ to run all tests"
       run_mypy_only:
         type: boolean
-        default: false
-        description: "Check to only run mypy"
-      mypy_timeout_minutes:
-        type: number
-        default: 20
-        description: "Timeout for pytest JOB in minutes"
+        default: true
+        description: "Is manually run"
+
 
 jobs:
 #  release_drafter:
@@ -54,6 +48,10 @@ jobs:
 #      OWNER: ${{ github.repository_owner }}
 #      REPO: ${{ github.event.repository.name }}
     steps:
+      - name: data
+        run: |
+          echo ${{ github.event }} 
+
       - name: Checkout code
         uses: actions/checkout@v4
 
