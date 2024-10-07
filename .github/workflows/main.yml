@@ -62,14 +62,3 @@ jobs:
         uses: actions/checkout@v4
 
       - uses: fuxingloh/multi-labeler@v4
-
-#  label-pr:
-#    runs-on: ubuntu-22.04
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#      - uses: grafana/pr-labeler-action@v0.1.0
-#        with:
-#          token: ${{ github.token }}
-
-
