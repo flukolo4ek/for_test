@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: data
         run: |
-          echo ${{ github.event }} 
+          env
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,5 +65,7 @@ jobs:
 #      - uses: grafana/pr-labeler-action@v0.1.0
 #        with:
 #          token: ${{ github.token }}
+
+
 
 
