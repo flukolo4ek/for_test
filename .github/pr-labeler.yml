@@ -1,3 +1,0 @@
-include-title: true # Consider the PR title when adding labels
-label-mapping: # Label to array of types for mapping
-  type/feat: ['feat']
