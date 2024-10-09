@@ -75,10 +75,4 @@ jobs:
         with:
           labels: type/feat\ncomponent/docs
 
-      - name: Test add labels action
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: | 
-            echo -e ${{ steps.get_labels.outputs.labels }}
-
 #      - uses: fuxingloh/multi-labeler@v4
