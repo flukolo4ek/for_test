@@ -20,19 +20,18 @@ do
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label"
+    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label "
   fi
 
 done
 
-
 for label in $COMPONENT_LABELS
 do
-  echo $COMMIT_TITLE | grep -Ei "[a-z]+\(.*$label.*\):*"
+  echo $COMMIT_TITLE | grep -Ei "[a-z]+\(.*$label.*\):*" > /dev/null
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$COMPONENT_LABELS_PREFIX$label"
+    LABELS_TO_ADD+="$COMPONENT_LABELS_PREFIX$label "
   fi
 
 done
