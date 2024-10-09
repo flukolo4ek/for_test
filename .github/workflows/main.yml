@@ -64,13 +64,7 @@ jobs:
       - name: Get labels to add from PR
         id: get_labels
         working-directory: .github/.scripts
-        run: | 
-          result=$(./add_labels.sh "$PR_TITLE")
-          echo $result
-          echo "labels=$result" >> $GITHUB_OUTPUT
-
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: echo "labels=$(./add_labels.sh "${{ github.event.pull_request.title }}")" >> $GITHUB_OUTPUT
 
       - name: Echo labels to add
         run: |
