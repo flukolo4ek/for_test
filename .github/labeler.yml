@@ -61,27 +61,27 @@ labels:
 
   - label: 'type/docs'
     matcher:
-      title: '^build*'
+      title: '^docs*'
 
   - label: 'type/deploy'
     matcher:
-      title: '^build*'
+      title: '^deploy*'
 
   - label: 'type/refactor'
     matcher:
-      title: '^build*'
+      title: '^refactor*'
 
   - label: 'type/perf'
     matcher:
-      title: '^build*'
+      title: '^perf*'
 
   - label: 'type/revert'
     matcher:
-      title: '^build*'
+      title: '^revert*'
 
   - label: 'type/infra'
     matcher:
-      title: '^build*'
+      title: '^infra*'
 
     # components
 
