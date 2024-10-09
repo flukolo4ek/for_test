@@ -38,7 +38,7 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  multilabeler:
+  add_labels:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -61,4 +61,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: fuxingloh/multi-labeler@v4
+      - name: Get labels to add from PR
+        id: get_labels
+        working-directory: .github/.scripts
+        run: echo "labels=$(./add_labels.sh ${{ github.event.pull_request.title }})" >> GITHUB_OUTPUT
+
+      - name: Echo labels to add
+        run: |
+          echo ${{ steps.get_labels.outputs.labels }}
+
+#      - uses: fuxingloh/multi-labeler@v4
