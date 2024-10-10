@@ -68,6 +68,11 @@ jobs:
 
       - name: Echo labels to add
         run: |
-          echo ${{ steps.get_labels.outputs.labels }}
+          echo -e "${{ steps.get_labels.outputs.labels }}"
+
+      - name: Test add labels action
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: type/feat\ncomponent/docs
 
 #      - uses: fuxingloh/multi-labeler@v4

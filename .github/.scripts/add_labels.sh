@@ -20,7 +20,7 @@ do
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label "
+    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label"
   fi
 
 done
@@ -31,7 +31,7 @@ do
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$COMPONENT_LABELS_PREFIX$label "
+    LABELS_TO_ADD+="\n$COMPONENT_LABELS_PREFIX$label"
   fi
 
 done
