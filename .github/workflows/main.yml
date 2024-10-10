@@ -54,20 +54,22 @@ jobs:
         run: |
           env
           echo $github.event_name
-          echo ${{ github.event_name }}
-          echo "${{ github.event_name }}"
+          echo ${{ github.event.pull_request.number }}
+          echo "${{ github.event.pull_request.head.repo.full_name }}"
           echo "${{ github.event_name }}"
 
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Get labels to add from PR
-        id: get_labels
         working-directory: .github/.scripts
-        run: echo "labels=$(./add_labels.sh "${{ github.event.pull_request.title }}")" >> $GITHUB_OUTPUT
+#        run: echo "labels=$(./add_labels.sh "${{ github.event.pull_request.title }}")" >> $GITHUB_OUTPUT
+        run: ./add_labels.sh
+        env:
+          REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          GH_TOKEN: ${{ github.token }}
 
-      - name: Echo labels to add
-        run: |
-          echo ${{ steps.get_labels.outputs.labels }}
 
 #      - uses: fuxingloh/multi-labeler@v4

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 CONFIG_URL="https://raw.githubusercontent.com/datalens-tech/datalens/main/.github/workflows/scripts/changelog/changelog_config.json"
-COMMIT_TITLE="$1"
+
+PR_TITLE=${PR_TITLE}
+GH_TOKEN=${GH_TOKEN}
+REPO=${REPO}
+PR_NUMBER=${PR_NUMBER}
 
 CONFIG_DATA=$(curl -s $CONFIG_URL)
 
@@ -16,24 +20,24 @@ LABELS_TO_ADD=""
 
 for label in $TYPE_LABELS
 do
-  echo $COMMIT_TITLE | grep -Ei "^$label*" > /dev/null
+  echo $PR_TITLE | grep -Ei "^$label*" > /dev/null
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label "
+    LABELS_TO_ADD+="$TYPE_LABELS_PREFIX$label"
   fi
 
 done
 
 for label in $COMPONENT_LABELS
 do
-  echo $COMMIT_TITLE | grep -Ei "[a-z]+\(.*$label.*\):*" > /dev/null
+  echo $PR_TITLE | grep -Ei "[a-z]+\(.*$label.*\):*" > /dev/null
 
   if [ $? == 0 ]
   then
-    LABELS_TO_ADD+="$COMPONENT_LABELS_PREFIX$label "
+    LABELS_TO_ADD+=",$COMPONENT_LABELS_PREFIX$label"
   fi
 
 done
 
-echo $LABELS_TO_ADD
+gh pr edit $PR_NUMBER --repo $REPO --add-label $LABELS_TO_ADD
