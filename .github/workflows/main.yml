@@ -43,27 +43,20 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-#    env:
-#      GH_TOKEN: ${{ github.token }}
-#      OWNER: ${{ github.repository_owner }}
-#      REPO: ${{ github.event.repository.name }}
+
     if: github.event_name == 'pull_request_target'
 
     steps:
       - name: data
         run: |
-          env
-          echo $github.event_name
-          echo ${{ github.event.pull_request.number }}
-          echo "${{ github.event.pull_request.head.repo.full_name }}"
-          echo "${{ github.event_name }}"
+          echo ${{ github.repository_owner }}
+          echo ${{ github.event.repository.name }}
 
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Get labels to add from PR
         working-directory: .github/.scripts
-#        run: echo "labels=$(./add_labels.sh "${{ github.event.pull_request.title }}")" >> $GITHUB_OUTPUT
         run: ./add_labels.sh
         env:
           REPO: ${{ github.event.pull_request.head.repo.full_name }}
